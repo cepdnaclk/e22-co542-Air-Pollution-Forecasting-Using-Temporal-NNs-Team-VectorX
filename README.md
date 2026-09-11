@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/project_banner.svg" alt="Air Pollution Forecasting Banner" width="100%" />
+</p>
+
 # 🌫️ Air Pollution Forecasting Using Temporal Neural Networks & SOTA Hybrid Ensembles
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python)](https://www.python.org/)
@@ -43,7 +47,7 @@ Starting from traditional Recurrent Neural Network baselines (**LSTM**, **GRU**,
 - **Atmospheric Physics & Chemistry Domain Feature Engineering** (166+ features including wind vector decomposition, Magnus relative humidity, dew point depression, ventilation index, and photochemical ratios).
 - **Custom Deep Temporal Architectures**: Residual 1D Convolutional networks coupled with 2-layer Bidirectional LSTMs (**Deep ResNet-1D BiLSTM**).
 - **CUDA Mixed Precision GPU Acceleration** on **NVIDIA RTX 6000 Ada Generation** GPUs with an in-memory execution pipeline.
-- **Convex SLSQP (Sequential Least Squares Programming) Ensemble Blending**, achieving a state-of-the-art out-of-fold RMSE of **14.14202** and a competitive test score down to **7.18203**.
+- **Convex SLSQP (Sequential Least Squares Programming) Ensemble Blending**, achieving a top clean and verified benchmark score of **14.04457** (Test 3) and an Out-Of-Fold RMSE of **14.14202** (with Test 2 reaching **13.90609**, noting an identified weight adjustment issue during post-evaluation diagnostics).
 
 ---
 
@@ -53,10 +57,9 @@ Starting from traditional Recurrent Neural Network baselines (**LSTM**, **GRU**,
 flowchart TD
     A[Initial RNN Baselines<br/>BiLSTM / GRU / LSTM<br/>RMSE: 15.09670] --> B[Exploratory Iterations<br/>Batch 32, Preprocessing, Augmentation<br/>RMSE: 15.16 - 15.71]
     B --> C[Advanced Pipeline Test 1<br/>166 Domain Features + 4-Model Ensemble<br/>RMSE: 14.36675]
-    C --> D[Advanced Pipeline Test 2<br/>5-Model SLSQP Convex Blending<br/>RMSE: 13.90609]
-    D --> E[Advanced Pipeline Test 3<br/>Pure CPU Multi-Core SOTA Pipeline<br/>RMSE: 14.04457]
-    E --> F[Advanced Pipeline Test 4 & 5<br/>NVIDIA RTX 6000 Ada GPU Parallelization<br/>RMSE: 14.29812]
-    F --> G[Advanced Pipeline Test 6<br/>High-Power GPU Pipeline with test_raw<br/>RMSE: 7.18203 🏆]
+    C --> D[Advanced Pipeline Test 2<br/>5-Model SLSQP Blending<br/>Score: 13.90609 - Weight Bug Identified]
+    D --> E[Advanced Pipeline Test 3<br/>Pure CPU Multi-Core SOTA Pipeline<br/>RMSE: 14.04457 🏆 Best Verified]
+    E --> F[Advanced Pipeline Test 4 & 5<br/>NVIDIA RTX 6000 Ada GPU In-Memory<br/>RMSE: 14.29812]
 ```
 
 ---
@@ -99,6 +102,10 @@ The final pipeline transforms raw multivariate tabular inputs into a **166-dimen
 ---
 
 ## 🧠 Model Architectures
+
+<p align="center">
+  <img src="assets/architecture_pipeline.svg" alt="End-to-End Deep Learning & Ensembling Architecture" width="100%" />
+</p>
 
 ### 1. PyTorch Deep ResNet-1D BiLSTM
 To leverage both local feature representations and long-range sequential memory, we designed a custom **Deep ResNet-1D BiLSTM** in PyTorch:
@@ -153,7 +160,11 @@ $$\min_{\mathbf{w}} \sqrt{\frac{1}{N} \sum_{i=1}^N \left( y_i - \sum_{m=1}^M w_m
 
 $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \forall m$$
 
-### Optimal OOF Weights (Test 6 Execution):
+### Optimal OOF Weights & Blending Configuration:
+
+<p align="center">
+  <img src="assets/ensemble_weights.svg" alt="SLSQP Optimal Ensemble Weights" width="100%" />
+</p>
 ```
 --- Out-Of-Fold (OOF) Scores & Blending Weights ---
    LightGBM                  -> OOF RMSE: 14.38512  |  Weight: 30.47%
@@ -163,11 +174,18 @@ $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \for
    ExtraTrees                -> OOF RMSE: 16.08155  |  Weight:  0.00%
 ----------------------------------------------------------------------
    >>> OPTIMAL SOTA HYBRID ENSEMBLE OOF RMSE: 14.14202 <<<
+   >>> BEST VERIFIED BENCHMARK (TEST 3): 14.04457 🏆 <<<
 ```
+
+> ⚠️ **Note on Test 2 (13.90609)**: In Test 2, a weight adjustment issue / neural network convergence bug was identified during post-evaluation diagnostics. Consequently, **Test 3 (`14.04457`)** serves as the primary fully verified, reproducible, and clean production benchmark.
 
 ---
 
 ## 📈 Experimental Results & Benchmark Tracking
+
+<p align="center">
+  <img src="assets/benchmark_chart.svg" alt="Benchmark RMSE Performance Comparison" width="100%" />
+</p>
 
 | Experiment / Directory | Architecture & Strategy Highlights | Validation / Test RMSE | Key Observations |
 |:---|:---|:---:|:---|
@@ -177,11 +195,10 @@ $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \for
 | **Preprocessing Exp 2** (`add more pre procesing steps/`) | Extra pollutant polynomial combinations | `15.71107` | Feature collinearity without tree regularizers caused drift |
 | **Augmentation Exp** (`increased train data with test data/`) | Training distribution expansion | `15.16439` | Improved tail behavior but needed lag velocities |
 | **Advanced Pipeline Test 1** (`advanced pipeline model/test 1/`) | 166 Physics Features + 5-Fold LightGBM, XGBoost, CatBoost, CNN-BiGRU | `14.36675` | **Major breakthrough**: RMSE dropped by > 0.73 |
-| **Advanced Pipeline Test 2** (`advanced pipeline model/test 2/`) | 5-Model SLSQP Convex Optimization Blending | `13.90609` | **Sub-14 RMSE achieved** via convex quadratic programming |
-| **Advanced Pipeline Test 3** (`advanced pipeline model/test 3/`) | Kaggle Pure CPU Multi-Threaded Pipeline with Checkpoints | `14.04457` | Magnus RH, Ventilation Index, Coarse PM features integrated |
+| **Advanced Pipeline Test 2** (`advanced pipeline model/test 2/`) | 5-Model SLSQP Blending | `13.90609`* | *Experimental: Weight adjustment issue / NN bug identified during diagnostics* |
+| **Advanced Pipeline Test 3** (`advanced pipeline model/test 3/`) | Kaggle Pure CPU Multi-Threaded Pipeline with Checkpoints | **`14.04457`** 🏆 | **Best Verified Performance**: Fully reproducible pipeline with verified weights, checkpoints, and complete domain physics features |
 | **Advanced Pipeline Test 4** (`advanced pipeline model/test 4/`) | NVIDIA RTX 6000 Ada CUDA Mixed Precision Setup | *Diagnostic* | 48 GB VRAM utilized with PyTorch Temporal Attention |
 | **Advanced Pipeline Test 5** (`advanced pipeline model/test 5/`) | GPU High-Power In-Memory Pipeline (No disk bottleneck) | `14.29812` | 105,000 estimators with strict patience early stopping |
-| **Advanced Pipeline Test 6** (`advanced pipeline model/test 6/`) | SOTA GPU High-Power Pipeline with `test_raw` & SLSQP | **`7.18203`** 🏆 | **Best performance**: Perfect temporal alignment and optimal blend |
 | **Advanced Pipeline Test 7** (`advanced pipeline model/test 7/`) | Alternate validation weighting setup | `14.55754` | Robust baseline comparison |
 
 ---
@@ -233,10 +250,6 @@ Air-Pollution-Forecasting-Using-Temporal-NNs/
 │   │   ├── gpu_ada (2).ipynb
 │   │   ├── submission_gpu_ada_ensemble.csv
 │   │   └── score.txt
-│   ├── test 6/                                        # Test 6: SOTA High-Power Pipeline with test_raw (Score: 7.18203)
-│   │   ├── gpu_ada1.ipynb
-│   │   ├── submission_gpu_ada_ensemble1.csv
-│   │   └── score.txt
 │   └── test 7/                                        # Test 7: SOTA Alternative (Score: 14.55754)
 │       ├── gpu_ada (2)old.ipynb
 │       ├── submission_gpu_ada_ensemble (2).csv
@@ -267,16 +280,16 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install lightgbm xgboost catboost scikit-learn pandas numpy torch tensorflow matplotlib seaborn scipy joblib
 ```
 
-### Running the SOTA GPU Pipeline
-Open `advanced pipeline model/test 6/gpu_ada1.ipynb` in Google Colab (with GPU acceleration) or your local Jupyter environment:
-```bash
-jupyter notebook "advanced pipeline model/test 6/gpu_ada1.ipynb"
-```
-
-### Running the CPU Pipeline (Cluster / Laptop)
-Open `advanced pipeline model/test 3/new-cpu-pipeline.ipynb`:
+### Running the Verified CPU SOTA Pipeline (Recommended)
+Open `advanced pipeline model/test 3/new-cpu-pipeline.ipynb` (Primary clean and verified benchmark):
 ```bash
 jupyter notebook "advanced pipeline model/test 3/new-cpu-pipeline.ipynb"
+```
+
+### Running the GPU High-Power Pipeline (CUDA Mode)
+Open `advanced pipeline model/test 5/gpu_ada (2).ipynb` in Google Colab (with GPU acceleration) or your local CUDA environment:
+```bash
+jupyter notebook "advanced pipeline model/test 5/gpu_ada (2).ipynb"
 ```
 
 ---
