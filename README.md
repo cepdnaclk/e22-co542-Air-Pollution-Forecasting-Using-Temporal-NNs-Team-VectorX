@@ -35,15 +35,15 @@
 
 ## 🌟 Executive Summary
 
-Air pollution, particularly fine particulate matter with aerodynamic diameter $< 2.5\,\mu\text{m}$ ($\text{PM}_{2.5}$), poses catastrophic risks to global public health and environmental ecosystems. Due to non-linear chemical interactions, atmospheric boundary layer dynamics, meteorological transport, and temporal autocorrelation, predicting hourly $\text{PM}_{2.5}$ concentrations is an intricate spatio-temporal challenge.
+Air pollution, particularly fine particulate matter with aerodynamic diameter less than 2.5 μm (**PM2.5**), poses catastrophic risks to global public health and environmental ecosystems. Due to non-linear chemical interactions, atmospheric boundary layer dynamics, meteorological transport, and temporal autocorrelation, predicting hourly PM2.5 concentrations is an intricate spatio-temporal challenge.
 
 This project delivers an end-to-end, high-performance deep learning and machine learning forecasting system developed on multi-site air-quality observations across **12 national monitoring stations in Beijing**.
 
-Starting from traditional Recurrent Neural Network baselines (**LSTM**, **GRU**, **BiLSTM** with RMSE $\approx 15.09 - 15.71$), the project systematically evolved into an industry-grade, ultra-high-performance **Advanced Pipeline Model** integrating:
-- **Atmospheric Physics & Chemistry Domain Feature Engineering** ($166+$ features including wind vector decomposition, Magnus relative humidity, dew point depression, ventilation index, and photochemical ratios).
+Starting from traditional Recurrent Neural Network baselines (**LSTM**, **GRU**, **BiLSTM** with RMSE ~ 15.09 - 15.71), the project systematically evolved into an industry-grade, ultra-high-performance **Advanced Pipeline Model** integrating:
+- **Atmospheric Physics & Chemistry Domain Feature Engineering** (166+ features including wind vector decomposition, Magnus relative humidity, dew point depression, ventilation index, and photochemical ratios).
 - **Custom Deep Temporal Architectures**: Residual 1D Convolutional networks coupled with 2-layer Bidirectional LSTMs (**Deep ResNet-1D BiLSTM**).
 - **CUDA Mixed Precision GPU Acceleration** on **NVIDIA RTX 6000 Ada Generation** GPUs with an in-memory execution pipeline.
-- **Convex SLSQP (Sequential Least Squares Programming) Ensemble Blending**, achieving a state-of-the-art out-of-fold RMSE of **$14.14202$** and a competitive test score down to **$7.18203$**.
+- **Convex SLSQP (Sequential Least Squares Programming) Ensemble Blending**, achieving a state-of-the-art out-of-fold RMSE of **14.14202** and a competitive test score down to **7.18203**.
 
 ---
 
@@ -66,9 +66,9 @@ flowchart TD
 ### 1. Dataset Overview
 The dataset contains continuous, multi-year hourly meteorological and air pollutant records across **12 air quality monitoring stations in Beijing**:
 - **Monitoring Stations**: *Aotizhongxin, Changping, Dingling, Dongsi, Guanyuan, Gucheng, Huairou, Nongzhanguan, Shunyi, Tiantan, Wanliu, Wanshouxigong*.
-- **Pollutants**: $\text{PM}_{2.5}, \text{PM}_{10}, \text{SO}_2, \text{NO}_2, \text{CO}, \text{O}_3$
-- **Meteorological Factors**: Temperature ($\text{TEMP}$), Atmospheric Pressure ($\text{PRES}$), Dew Point ($\text{DEWP}$), Precipitation ($\text{RAIN}$), Wind Direction ($\text{wd}$), Wind Speed ($\text{WSPM}$)
-- **Dataset Size**: Over $315,648$ hourly training records.
+- **Pollutants**: PM2.5, PM10, SO2, NO2, CO, O3
+- **Meteorological Factors**: Temperature (TEMP), Atmospheric Pressure (PRES), Dew Point (DEWP), Precipitation (RAIN), Wind Direction (wd), Wind Speed (WSPM)
+- **Dataset Size**: Over 315,648 hourly training records.
 
 ### 2. Task Formulation
 Given an hourly sliding observation window $X_{t-24:t}$ over the preceding 24 hours of atmospheric and chemical observations at station $s$, forecast the 1-hour ahead particulate concentration:
@@ -85,16 +85,16 @@ The final pipeline transforms raw multivariate tabular inputs into a **166-dimen
 
 | Category | Engineered Features | Domain Rationale / Formula |
 |:---|:---|:---|
-| **Wind Vector Kinematics** | $W_x, W_y$ | Wind direction angle $\theta$ decomposed into orthogonal Cartesian velocity vectors: <br> $W_x = \text{WSPM} \cdot \sin(\theta), \quad W_y = \text{WSPM} \cdot \cos(\theta)$ |
-| **Physical Meteorology** | $\text{dew\_point\_depression}$, $\text{relative\_humidity}$, $\text{ventilation\_index}$ | <ul><li>Dew Point Depression: $\Delta T = \text{TEMP} - \text{DEWP}$</li><li>Magnus-Tetens Relative Humidity ($\text{RH}$): <br> $\text{RH} = 100 \times \exp\left(\frac{17.625 \cdot \text{DEWP}}{243.04 + \text{DEWP}} - \frac{17.625 \cdot \text{TEMP}}{243.04 + \text{TEMP}}\right)$</li><li>Ventilation Index: $VI = \text{WSPM} \cdot (\Delta T + 15.0)$</li></ul> |
-| **Photochemical & Particle Ratios** | $\frac{\text{PM}_{2.5}}{\text{PM}_{10}}$, $\frac{\text{PM}_{2.5}}{\text{CO}}$, $\frac{\text{NO}_2}{\text{O}_3}$, $\text{coarse\_pm}$ | <ul><li>Coarse particulate separation: $\text{coarse\_pm} = \max(\text{PM}_{10} - \text{PM}_{2.5}, 0)$</li><li>Combustion & secondary aerosol proxy ratios</li><li>Total Combined Atmospheric Pollution Index</li></ul> |
-| **Cyclical Trigonometric Time** | $\sin/\cos(\text{hour})$, $\sin/\cos(\text{month})$, $\sin/\cos(\text{dayofweek})$, $\sin/\cos(\text{dayofyear})$ | Continuous circular representations preserving cyclical boundaries (e.g. 23:00 to 00:00; December to January) |
-| **Seasonal Indicator** | $\text{is\_heating\_season}$ | Binary indicator for central urban heating season (November through March) with heavy coal consumption |
-| **Temporal Lags** | $\text{PM}_{2.5}\_\text{lag}\_k$ ($k \in [1..24]$) | Autoregressive historical memory at 1, 2, 3, 4, 5, 6, 12, 18, and 24-hour delays |
-| **Velocity & Acceleration** | $\Delta_k \text{PM}_{2.5}$, $\text{PM}_{2.5}\_\text{accel}$, Relative Diffs | <ul><li>1st order velocity: $\Delta_k = x_t - x_{t-k}$ ($k \in \{1, 2, 3, 4, 6, 12, 24\}$)</li><li>2nd order acceleration: $(x_t - x_{t-1}) - (x_{t-1} - x_{t-2})$</li><li>Relative surge rate: $(x_t - x_{t-1}) / (x_{t-1} + 1)$</li></ul> |
-| **Multi-Window Rolling Statistics** | Mean, Std, Min, Max, Range, Deviations | Rolling windows over $w \in \{3\text{h}, 6\text{h}, 12\text{h}, 24\text{h}\}$ to capture baseline shifts and sudden pollutant spikes |
-| **Exponential Moving Averages** | $\text{EMA}_3, \text{EMA}_6, \text{EMA}_{12}$ | Exponential smoothing with decaying weight to track immediate concentration momentum |
-| **Target Statistical Encodings** | Station Target Mean & Std | Out-of-fold historical station baseline distributions for localized bias mitigation |
+| **Wind Vector Kinematics** | `Wx`, `Wy` | Wind direction angle $\theta$ decomposed into orthogonal Cartesian velocity vectors: <br> `Wx = WSPM * sin(θ)`, `Wy = WSPM * cos(θ)` |
+| **Physical Meteorology** | `dew_point_depression`, `relative_humidity`, `ventilation_index` | <ul><li>Dew Point Depression: `ΔT = TEMP - DEWP`</li><li>Magnus-Tetens Relative Humidity (RH): <br> `RH = 100 * exp((17.625 * DEWP) / (243.04 + DEWP) - (17.625 * TEMP) / (243.04 + TEMP))`</li><li>Ventilation Index: `VI = WSPM * (ΔT + 15.0)`</li></ul> |
+| **Photochemical & Particle Ratios** | `PM2.5 / PM10`, `PM2.5 / CO`, `NO2 / O3`, `coarse_pm` | <ul><li>Coarse particulate separation: `coarse_pm = max(PM10 - PM2.5, 0)`</li><li>Combustion & secondary aerosol proxy ratios</li><li>Total Combined Atmospheric Pollution Index</li></ul> |
+| **Cyclical Trigonometric Time** | `hour_sin`, `hour_cos`, `month_sin`, `month_cos`, `dayofweek_sin`, `dayofweek_cos`, `dayofyear_sin`, `dayofyear_cos` | Continuous circular representations preserving cyclical boundaries (e.g. 23:00 to 00:00; December to January) |
+| **Seasonal Indicator** | `is_heating_season` | Binary indicator for central urban heating season (November through March) with heavy coal consumption |
+| **Temporal Lags** | `PM2.5_lag_1` to `PM2.5_lag_24` | Autoregressive historical memory at 1, 2, 3, 4, 5, 6, 12, 18, and 24-hour delays |
+| **Velocity & Acceleration** | `PM2.5_diff_k`, `PM2.5_accel`, `PM2.5_diff_k_ratio` | <ul><li>1st order velocity: `diff_k = x_t - x_{t-k}` for $k \in \{1, 2, 3, 4, 6, 12, 24\}$</li><li>2nd order acceleration: `(x_t - x_{t-1}) - (x_{t-1} - x_{t-2})`</li><li>Relative surge rate: `(x_t - x_{t-1}) / (x_{t-1} + 1)`</li></ul> |
+| **Multi-Window Rolling Statistics** | Mean, Std, Min, Max, Range, Deviations | Rolling windows over 3h, 6h, 12h, and 24h to capture baseline shifts and sudden pollutant spikes |
+| **Exponential Moving Averages** | `PM2.5_ema_3`, `PM2.5_ema_6`, `PM2.5_ema_12` | Exponential smoothing with decaying weight to track immediate concentration momentum |
+| **Target Statistical Encodings** | `station_target_mean`, `station_target_std` | Out-of-fold historical station baseline distributions for localized bias mitigation |
 
 ---
 
@@ -105,8 +105,8 @@ To leverage both local feature representations and long-range sequential memory,
 - **Input Projection**: Linear layer projecting 166 input dimensions to a 256-dimensional latent space.
 - **Residual Blocks (`ResNet1DBlock`)**: Two stacked residual blocks featuring feed-forward transformations with identity skip connections:
   $$\mathbf{h}_{\text{res}} = \text{ReLU}\left(\mathbf{W}_2 \cdot \text{ReLU}(\mathbf{W}_1 \mathbf{h} + \mathbf{b}_1) + \mathbf{b}_2 + \mathbf{h}\right)$$
-- **Bidirectional Temporal Core**: 2-layer Bidirectional LSTM ($128$ hidden units per direction, dropout $= 0.2$) capturing bidirectional state representations.
-- **Regression Head**: Multi-layer perceptron ($\text{Linear}(256 \to 128) \to \text{ReLU} \to \text{Dropout}(0.1) \to \text{Linear}(128 \to 64) \to \text{ReLU} \to \text{Linear}(64 \to 1)$).
+- **Bidirectional Temporal Core**: 2-layer Bidirectional LSTM ($128$ hidden units per direction, dropout = 0.2) capturing bidirectional state representations.
+- **Regression Head**: Multi-layer perceptron (`Linear(256 -> 128)` → `ReLU` → `Dropout(0.1)` → `Linear(128 -> 64)` → `ReLU` → `Linear(64 -> 1)`).
 - **Target Normalization**: `StandardScaler` on features and targets, with cosine/plateau learning rate decay (`ReduceLROnPlateau`).
 
 ```
@@ -131,8 +131,10 @@ Input (166 Features)
 ### 2. TensorFlow/Keras Bidirectional LSTM & GRU Baseline
 Built in `Air_Pollution_Forecasting_Using_Temporal_NN_new.ipynb` for initial benchmark analysis:
 - **Station-aware Sequence Generator**: Builds 24-hour temporal arrays without crossing station boundaries (`(Samples, 24, 43)`).
-- **BiLSTM Model**: Input $(24, 43) \to \text{Bidirectional}(\text{LSTM}(128, \text{return\_sequences}=\text{True})) \to \text{Dropout}(0.2) \to \text{Bidirectional}(\text{LSTM}(64)) \to \text{Dense}(64) \to \text{Dense}(1)$.
-- **BiGRU Model**: Input $(24, 43) \to \text{Bidirectional}(\text{GRU}(128, \text{return\_sequences}=\text{True})) \to \text{Dropout}(0.2) \to \text{Bidirectional}(\text{GRU}(64)) \to \text{Dense}(64) \to \text{Dense}(1)$.
+- **BiLSTM Model**: 
+  `Input (24, 43)` → `Bidirectional(LSTM(128, return_sequences=True))` → `Dropout(0.2)` → `Bidirectional(LSTM(64))` → `Dense(64, activation='relu')` → `Dense(1)`
+- **BiGRU Model**: 
+  `Input (24, 43)` → `Bidirectional(GRU(128, return_sequences=True))` → `Dropout(0.2)` → `Bidirectional(GRU(64))` → `Dense(64, activation='relu')` → `Dense(1)`
 - **Target Transformation**: $\log(1 + y)$ target compression with `np.log1p` to stabilize high-value outlier gradients, followed by `MinMaxScaler`.
 
 ### 3. Gradient Boosted Decision Trees (GBDTs)
@@ -174,7 +176,7 @@ $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \for
 | **Preprocessing Exp 1** (`new mdel with pre processing steps/`) | Station interpolation + one-hot encodings | `15.59510` | Imputation without wind decomposition plateaued |
 | **Preprocessing Exp 2** (`add more pre procesing steps/`) | Extra pollutant polynomial combinations | `15.71107` | Feature collinearity without tree regularizers caused drift |
 | **Augmentation Exp** (`increased train data with test data/`) | Training distribution expansion | `15.16439` | Improved tail behavior but needed lag velocities |
-| **Advanced Pipeline Test 1** (`advanced pipeline model/test 1/`) | 166 Physics Features + 5-Fold LightGBM, XGBoost, CatBoost, CNN-BiGRU | `14.36675` | **Major breakthrough**: RMSE dropped by $>0.73$ |
+| **Advanced Pipeline Test 1** (`advanced pipeline model/test 1/`) | 166 Physics Features + 5-Fold LightGBM, XGBoost, CatBoost, CNN-BiGRU | `14.36675` | **Major breakthrough**: RMSE dropped by > 0.73 |
 | **Advanced Pipeline Test 2** (`advanced pipeline model/test 2/`) | 5-Model SLSQP Convex Optimization Blending | `13.90609` | **Sub-14 RMSE achieved** via convex quadratic programming |
 | **Advanced Pipeline Test 3** (`advanced pipeline model/test 3/`) | Kaggle Pure CPU Multi-Threaded Pipeline with Checkpoints | `14.04457` | Magnus RH, Ventilation Index, Coarse PM features integrated |
 | **Advanced Pipeline Test 4** (`advanced pipeline model/test 4/`) | NVIDIA RTX 6000 Ada CUDA Mixed Precision Setup | *Diagnostic* | 48 GB VRAM utilized with PyTorch Temporal Attention |
@@ -283,37 +285,37 @@ jupyter notebook "advanced pipeline model/test 3/new-cpu-pipeline.ipynb"
 
 This project was conducted as part of **CO5420: Neural Networks & Deep Learning** under the **Department of Computer Engineering, Faculty of Engineering, University of Peradeniya**.
 
-<table align="center" style="border: none; text-align: center;">
+<table align="center" style="border: none; width: 100%; text-align: center; table-layout: fixed;">
   <tr>
-    <td align="center" width="20%">
-      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22001.jpg" width="300" height="300" style="border-radius: 12px; object-fit: cover;" alt="H.M.H.N. Aberathna"/><br/>
-      <b>H.M.H.N. Aberathna</b><br/>
-      <code>E/22/001</code><br/>
-      <a href="mailto:e22001@eng.pdn.ac.lk">e22001@eng.pdn.ac.lk</a>
+    <td align="center" style="border: none; padding: 4px; vertical-align: top;" width="20%">
+      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22001.jpg" width="105" height="105" style="border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 6px auto;" alt="H.M.H.N. Aberathna"/><br/>
+      <b style="font-size: 0.9em;">H.M.H.N. Aberathna</b><br/>
+      <code style="font-size: 0.8em;">E/22/001</code><br/>
+      <a href="mailto:e22001@eng.pdn.ac.lk" style="font-size: 0.8em;">e22001@eng.pdn.ac.lk</a>
     </td>
-    <td align="center" width="20%">
-      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22008.jpg" width="300" height="300" style="border-radius: 12px; object-fit: cover;" alt="T.H. Abeywickrama"/><br/>
-      <b>T.H. Abeywickrama</b><br/>
-      <code>E/22/008</code><br/>
-      <a href="mailto:e22008@eng.pdn.ac.lk">e22008@eng.pdn.ac.lk</a>
+    <td align="center" style="border: none; padding: 4px; vertical-align: top;" width="20%">
+      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22008.jpg" width="105" height="105" style="border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 6px auto;" alt="T.H. Abeywickrama"/><br/>
+      <b style="font-size: 0.9em;">T.H. Abeywickrama</b><br/>
+      <code style="font-size: 0.8em;">E/22/008</code><br/>
+      <a href="mailto:e22008@eng.pdn.ac.lk" style="font-size: 0.8em;">e22008@eng.pdn.ac.lk</a>
     </td>
-    <td align="center" width="20%">
-      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22027.jpg" width="300" height="300" style="border-radius: 12px; object-fit: cover;" alt="M.A.N.P. Anawarathne"/><br/>
-      <b>M.A.N.P. Anawarathne</b><br/>
-      <code>E/22/027</code><br/>
-      <a href="mailto:e22027@eng.pdn.ac.lk">e22027@eng.pdn.ac.lk</a>
+    <td align="center" style="border: none; padding: 4px; vertical-align: top;" width="20%">
+      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22027.jpg" width="105" height="105" style="border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 6px auto;" alt="M.A.N.P. Anawarathne"/><br/>
+      <b style="font-size: 0.9em;">M.A.N.P. Anawarathne</b><br/>
+      <code style="font-size: 0.8em;">E/22/027</code><br/>
+      <a href="mailto:e22027@eng.pdn.ac.lk" style="font-size: 0.8em;">e22027@eng.pdn.ac.lk</a>
     </td>
-    <td align="center" width="20%">
-      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22130.jpg" width="300" height="300" style="border-radius: 12px; object-fit: cover;" alt="S.H.S. Hansara"/><br/>
-      <b>S.H.S. Hansara</b><br/>
-      <code>E/22/130</code><br/>
-      <a href="mailto:e22130@eng.pdn.ac.lk">e22130@eng.pdn.ac.lk</a>
+    <td align="center" style="border: none; padding: 4px; vertical-align: top;" width="20%">
+      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22130.jpg" width="105" height="105" style="border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 6px auto;" alt="S.H.S. Hansara"/><br/>
+      <b style="font-size: 0.9em;">S.H.S. Hansara</b><br/>
+      <code style="font-size: 0.8em;">E/22/130</code><br/>
+      <a href="mailto:e22130@eng.pdn.ac.lk" style="font-size: 0.8em;">e22130@eng.pdn.ac.lk</a>
     </td>
-    <td align="center" width="20%">
-      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22362.jpg" width="300" height="300" style="border-radius: 12px; object-fit: cover;" alt="W.A.H. Sathsarani"/><br/>
-      <b>W.A.H. Sathsarani</b><br/>
-      <code>E/22/362</code><br/>
-      <a href="mailto:e22362@eng.pdn.ac.lk">e22362@eng.pdn.ac.lk</a>
+    <td align="center" style="border: none; padding: 4px; vertical-align: top;" width="20%">
+      <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22362.jpg" width="105" height="105" style="border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 6px auto;" alt="W.A.H. Sathsarani"/><br/>
+      <b style="font-size: 0.9em;">W.A.H. Sathsarani</b><br/>
+      <code style="font-size: 0.8em;">E/22/362</code><br/>
+      <a href="mailto:e22362@eng.pdn.ac.lk" style="font-size: 0.8em;">e22362@eng.pdn.ac.lk</a>
     </td>
   </tr>
 </table>
