@@ -1,9 +1,9 @@
 # This theme is based on https://github.com/jekyll/minima
 # Please refer above link to know the available configurations
 
-title: ""
+title: "Air Pollution Forecasting Using Temporal NNs-Team VectorX"
 remote_theme: cepdnaclk/eYY-project-theme
-description: ""
+description: "An end-to-end deep learning and machine learning framework for hourly PM2.5 air pollution forecasting across 12 Beijing monitoring stations, leveraging physics-informed atmospheric feature engineering, deep residual temporal neural networks (ResNet-1D BiLSTM), and SLSQP hybrid ensemble blending."
 markdown: kramdown
 
 kramdown:
