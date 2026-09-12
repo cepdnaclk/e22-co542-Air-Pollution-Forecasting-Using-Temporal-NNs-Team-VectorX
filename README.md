@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/project_banner.svg" alt="Air Pollution Forecasting Banner" width="100%" />
+  <img src="code/assets/project_banner.svg" alt="Air Pollution Forecasting Banner" width="100%" />
 </p>
 
 # 🌫️ Air Pollution Forecasting Using Temporal Neural Networks & SOTA Hybrid Ensembles
@@ -104,7 +104,7 @@ The final pipeline transforms raw multivariate tabular inputs into a **166-dimen
 ## 🧠 Model Architectures
 
 <p align="center">
-  <img src="assets/architecture_pipeline.svg" alt="End-to-End Deep Learning & Ensembling Architecture" width="100%" />
+  <img src="code/assets/architecture_pipeline.svg" alt="End-to-End Deep Learning & Ensembling Architecture" width="100%" />
 </p>
 
 ### 1. PyTorch Deep ResNet-1D BiLSTM
@@ -163,7 +163,7 @@ $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \for
 ### Optimal OOF Weights & Blending Configuration:
 
 <p align="center">
-  <img src="assets/ensemble_weights.svg" alt="SLSQP Optimal Ensemble Weights" width="100%" />
+  <img src="code/assets/ensemble_weights.svg" alt="SLSQP Optimal Ensemble Weights" width="100%" />
 </p>
 ```
 --- Out-Of-Fold (OOF) Scores & Blending Weights ---
@@ -184,7 +184,7 @@ $$\text{subject to} \quad \sum_{m=1}^M w_m = 1, \quad 0 \le w_m \le 1 \quad \for
 ## 📈 Experimental Results & Benchmark Tracking
 
 <p align="center">
-  <img src="assets/benchmark_chart.svg" alt="Benchmark RMSE Performance Comparison" width="100%" />
+  <img src="code/assets/benchmark_chart.svg" alt="Benchmark RMSE Performance Comparison" width="100%" />
 </p>
 
 | Experiment / Directory | Architecture & Strategy Highlights | Validation / Test RMSE | Key Observations |
