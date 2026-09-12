@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ensBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </linearGradient>
+    <linearGradient id="catGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="lgbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="xgbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="torchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="380" rx="14" fill="url(#ensBg)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 32)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">
+      SLSQP Optimal Convex Ensemble Blend Breakdown
+    </text>
+    <text y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">
+      Loss-Minimizing Convex Weight Allocation Across Diverse Machine Learning &amp; Deep Temporal Models
+    </text>
+  </g>
+
+  <!-- Left: Stacked Percentage Bar + Stat Summary -->
+  <g transform="translate(40, 95)">
+    <!-- Stacked Bar (Length = 520px) -->
+    <!-- CatBoost: 35.46% => 184px -->
+    <!-- LightGBM: 30.47% => 158px -->
+    <!-- XGBoost: 17.79% => 93px -->
+    <!-- PyTorch: 16.28% => 85px -->
+    <rect x="0" y="0" width="184" height="40" rx="6" fill="url(#catGrad)"/>
+    <rect x="184" y="0" width="158" height="40" fill="url(#lgbGrad)"/>
+    <rect x="342" y="0" width="93" height="40" fill="url(#xgbGrad)"/>
+    <rect x="435" y="0" width="85" height="40" rx="6" fill="url(#torchGrad)"/>
+
+    <text x="92" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">35.46%</text>
+    <text x="263" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">30.47%</text>
+    <text x="388" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">17.79%</text>
+    <text x="477" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">16.28%</text>
+
+    <!-- Model Details Cards Below Bar -->
+    <g transform="translate(0, 65)">
+      <!-- CatBoost Card -->
+      <rect width="250" height="75" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <circle cx="20" cy="24" r="6" fill="#F59E0B"/>
+      <text x="34" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#F8FAFC">CatBoost Regressor</text>
+      <text x="34" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">OOF RMSE: 14.34932</text>
+      <text x="34" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#FBBF24">Ensemble Weight: 35.46%</text>
+
+      <!-- LightGBM Card -->
+      <rect x="270" width="250" height="75" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <circle cx="290" cy="24" r="6" fill="#10B981"/>
+      <text x="304" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#F8FAFC">LightGBM (n_jobs=8)</text>
+      <text x="304" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">OOF RMSE: 14.38512</text>
+      <text x="304" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#34D399">Ensemble Weight: 30.47%</text>
+    </g>
+
+    <g transform="translate(0, 155)">
+      <!-- XGBoost Card -->
+      <rect width="250" height="75" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <circle cx="20" cy="24" r="6" fill="#3B82F6"/>
+      <text x="34" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#F8FAFC">XGBoost (GPU-Hist)</text>
+      <text x="34" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">OOF RMSE: 14.46854</text>
+      <text x="34" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#60A5FA">Ensemble Weight: 17.79%</text>
+
+      <!-- PyTorch Card -->
+      <rect x="270" width="250" height="75" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.2"/>
+      <circle cx="290" cy="24" r="6" fill="#A855F7"/>
+      <text x="304" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#E9D5FF">PyTorch ResNet-BiLSTM</text>
+      <text x="304" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">OOF RMSE: 15.75860</text>
+      <text x="304" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#C084FC">Ensemble Weight: 16.28%</text>
+    </g>
+  </g>
+
+  <!-- Right: Result Callout Card -->
+  <g transform="translate(600, 95)">
+    <rect width="260" height="235" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    
+    <g transform="translate(20, 26)">
+      <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#34D399" letter-spacing="1">MATHEMATICAL ENSEMBLE</text>
+      
+      <text y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF">14.142</text>
+      <text x="120" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#10B981">OOF RMSE</text>
+      
+      <line x1="0" y1="58" x2="220" y2="58" stroke="#334155" stroke-width="1"/>
+
+      <text y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">• Outperforms every single model</text>
+      <text y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">• CatBoost provides tree dominance</text>
+      <text y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">• PyTorch adds deep sequential bias</text>
+      <text y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">• ExtraTrees pruned (weight 0.0%)</text>
+      
+      <rect y="160" width="220" height="32" rx="6" fill="#064E3B"/>
+      <text x="110" y="180" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#6EE7B7">Best Verified Score: 14.04 🏆</text>
+    </g>
+  </g>
+</svg>

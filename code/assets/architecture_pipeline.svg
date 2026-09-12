@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </linearGradient>
+    <linearGradient id="boxGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="boxGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#14261C"/>
+    </linearGradient>
+
+    <!-- Marker Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#A855F7"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="520" rx="14" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <g transform="translate(40, 32)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">
+      End-to-End Hybrid Forecasting Pipeline Architecture
+    </text>
+    <text y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">
+      Spatio-Temporal Atmospheric Feature Synthesis, Deep ResNet-1D BiLSTM, Multi-GBDTs &amp; SLSQP Convex Optimization
+    </text>
+  </g>
+
+  <!-- Flow Steps -->
+  
+  <!-- Step 1: Raw Observation Data -->
+  <g transform="translate(40, 90)">
+    <rect width="210" height="380" rx="10" fill="url(#boxGrad1)" stroke="#334155" stroke-width="1.2"/>
+    <rect width="210" height="38" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38BDF8">1. Raw Multi-Site Inputs</text>
+    
+    <g transform="translate(16, 55)">
+      <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">12 Monitoring Stations:</text>
+      <text y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Aotizhongxin, Changping</text>
+      <text y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Dingling, Dongsi, Guanyuan</text>
+      <text y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Gucheng, Huairou, Nongzhan.</text>
+      <text y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Shunyi, Tiantan, Wanliu, etc.</text>
+
+      <line x1="0" y1="82" x2="178" y2="82" stroke="#334155" stroke-width="1"/>
+
+      <text y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Chemical Pollutants (6):</text>
+      <text y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• PM2.5, PM10, SO2, NO2, CO, O3</text>
+
+      <line x1="0" y1="136" x2="178" y2="136" stroke="#334155" stroke-width="1"/>
+
+      <text y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Meteorological Factors (6):</text>
+      <text y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• TEMP, PRES, DEWP, RAIN</text>
+      <text y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Wind Direction (wd), Speed (WSPM)</text>
+
+      <line x1="0" y1="206" x2="178" y2="206" stroke="#334155" stroke-width="1"/>
+
+      <text y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Temporal Span &amp; Volume:</text>
+      <text y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#10B981">• 315,648 Hourly Observations</text>
+      <text y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Station-wise Linear Interp.</text>
+      <text y="276" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94A3B8">• Zero Crossing-Station Leakage</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="250" y1="280" x2="285" y2="280" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: Atmospheric Feature Engineering -->
+  <g transform="translate(290, 90)">
+    <rect width="240" height="380" rx="10" fill="url(#boxGradAccent)" stroke="#38BDF8" stroke-width="1.2"/>
+    <rect width="240" height="38" rx="10" fill="#1E3A5F" stroke="#38BDF8" stroke-width="1.2"/>
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38BDF8">2. Physics &amp; Domain Features</text>
+    
+    <g transform="translate(16, 52)">
+      <!-- Box item -->
+      <rect width="208" height="48" rx="6" fill="#0F172A" stroke="#1E293B"/>
+      <text x="10" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9">Wind Kinematics</text>
+      <text x="10" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">Wx = WSPM·sin(θ), Wy = WSPM·cos(θ)</text>
+
+      <rect y="54" width="208" height="52" rx="6" fill="#0F172A" stroke="#1E293B"/>
+      <text x="10" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9">Physical Meteorology</text>
+      <text x="10" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">Magnus RH, Dew Point Depr. (ΔT)</text>
+      <text x="10" y="101" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#38BDF8">Ventilation Index: WSPM·(ΔT + 15)</text>
+
+      <rect y="112" width="208" height="48" rx="6" fill="#0F172A" stroke="#1E293B"/>
+      <text x="10" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9">Photochemical Ratios</text>
+      <text x="10" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">PM2.5/PM10, PM2.5/CO, Coarse PM</text>
+
+      <rect y="166" width="208" height="48" rx="6" fill="#0F172A" stroke="#1E293B"/>
+      <text x="10" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9">Kinematics: Velocity &amp; Accel.</text>
+      <text x="10" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">1st/2nd Diffs, Surge Rates, EMAs</text>
+
+      <rect y="220" width="208" height="48" rx="6" fill="#0F172A" stroke="#1E293B"/>
+      <text x="10" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9">Multi-Order Lags &amp; Rolls</text>
+      <text x="10" y="256" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">Lags 1-24h | Rolls 3h, 6h, 12h, 24h</text>
+
+      <rect y="274" width="208" height="38" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+      <text x="104" y="298" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#10B981">Total: 166 Engineered Features</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="530" y1="280" x2="565" y2="280" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Multi-Model Ensembles -->
+  <g transform="translate(570, 90)">
+    <rect width="240" height="380" rx="10" fill="url(#boxGrad1)" stroke="#818CF8" stroke-width="1.2"/>
+    <rect width="240" height="38" rx="10" fill="#1E293B" stroke="#818CF8" stroke-width="1.2"/>
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#A5B4FC">3. Diverse Model Pool</text>
+
+    <g transform="translate(16, 52)">
+      <!-- Model 1: CatBoost -->
+      <rect width="208" height="52" rx="6" fill="#0F172A" stroke="#334155"/>
+      <text x="12" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#F8FAFC">CatBoost Regressor</text>
+      <text x="12" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">OOF: 14.349 | Weight: 35.46%</text>
+
+      <!-- Model 2: LightGBM -->
+      <rect y="58" width="208" height="52" rx="6" fill="#0F172A" stroke="#334155"/>
+      <text x="12" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#F8FAFC">LightGBM (n_jobs=8)</text>
+      <text x="12" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">OOF: 14.385 | Weight: 30.47%</text>
+
+      <!-- Model 3: XGBoost -->
+      <rect y="116" width="208" height="52" rx="6" fill="#0F172A" stroke="#334155"/>
+      <text x="12" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#F8FAFC">XGBoost (GPU-Hist)</text>
+      <text x="12" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">OOF: 14.468 | Weight: 17.79%</text>
+
+      <!-- Model 4: PyTorch ResNet-BiLSTM -->
+      <rect y="174" width="208" height="64" rx="6" fill="#0F172A" stroke="#A855F7" stroke-width="1.2"/>
+      <text x="12" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#C084FC">PyTorch ResNet-1D BiLSTM</text>
+      <text x="12" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">2-Layer BiLSTM + Skip Residuals</text>
+      <text x="12" y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#C084FC">OOF: 15.758 | Weight: 16.28%</text>
+
+      <!-- Model 5: ExtraTrees -->
+      <rect y="244" width="208" height="42" rx="6" fill="#0F172A" stroke="#334155"/>
+      <text x="12" y="262" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#94A3B8">ExtraTrees (Diversity Regularizer)</text>
+      <text x="12" y="276" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#64748B">Weight: 0.00% (Pruned by SLSQP)</text>
+
+      <rect y="292" width="208" height="24" rx="4" fill="#1E293B"/>
+      <text x="104" y="308" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#94A3B8">5-Fold Cross Validation</text>
+    </g>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="810" y1="280" x2="845" y2="280" stroke="#818CF8" stroke-width="2" marker-end="url(#arrowPurple)"/>
+
+  <!-- Step 4: SLSQP Blending & Output -->
+  <g transform="translate(850, 90)">
+    <rect width="210" height="380" rx="10" fill="url(#goldGrad)" stroke="#10B981" stroke-width="1.4"/>
+    <rect width="210" height="38" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#34D399">4. SLSQP &amp; Prediction</text>
+
+    <g transform="translate(16, 52)">
+      <rect width="178" height="68" rx="6" fill="#0F172A" stroke="#334155"/>
+      <text x="10" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#34D399">SLSQP Optimization</text>
+      <text x="10" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">Convex Quadratic Loss</text>
+      <text x="10" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94A3B8">Minimization: min ||y - Σ w·ŷ||</text>
+      <text x="10" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#38BDF8">Constraints: Σ w = 1, w ≥ 0</text>
+
+      <!-- Badge Result -->
+      <g transform="translate(0, 80)">
+        <rect width="178" height="85" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+        <text x="89" y="22" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#6EE7B7" letter-spacing="1">OPTIMAL OOF RMSE</text>
+        <text x="89" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF">14.14</text>
+        <text x="89" y="74" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#A7F3D0">Best Test RMSE: 14.04 🏆</text>
+      </g>
+
+      <g transform="translate(0, 180)">
+        <rect width="178" height="135" rx="6" fill="#0F172A" stroke="#334155"/>
+        <text x="12" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#E2E8F0">Output Deliverables:</text>
+        <text x="12" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">• 1-Hour Ahead PM2.5 (μg/m³)</text>
+        <text x="12" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">• In-Memory Fast Inference</text>
+        <text x="12" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">• Full Model Checkpoints</text>
+        <text x="12" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94A3B8">• Zero Missing Predictions</text>
+        <text x="12" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#10B981">✓ Decision-Ready Policy</text>
+      </g>
+    </g>
+  </g>
+</svg>
