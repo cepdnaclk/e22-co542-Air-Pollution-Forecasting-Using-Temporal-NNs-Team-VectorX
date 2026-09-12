@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGradient)"/>
+
+  <!-- Subtle Ambient Grid -->
+  <g opacity="0.06" stroke="#94A3B8" stroke-width="1">
+    <line x1="0" y1="60" x2="1200" y2="60"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="150" y1="0" x2="150" y2="360"/>
+    <line x1="300" y1="0" x2="300" y2="360"/>
+    <line x1="450" y1="0" x2="450" y2="360"/>
+    <line x1="600" y1="0" x2="600" y2="360"/>
+    <line x1="750" y1="0" x2="750" y2="360"/>
+    <line x1="900" y1="0" x2="900" y2="360"/>
+    <line x1="1050" y1="0" x2="1050" y2="360"/>
+  </g>
+
+  <!-- Ambient Glowing Accents -->
+  <circle cx="1080" cy="90" r="160" fill="#06B6D4" opacity="0.10" filter="url(#glow)"/>
+  <circle cx="120" cy="270" r="140" fill="#8B5CF6" opacity="0.08" filter="url(#glow)"/>
+
+  <!-- Dynamic Atmospheric Waves (Subtle Background) -->
+  <path d="M 0 280 Q 200 240, 400 270 T 800 250 T 1200 230 L 1200 360 L 0 360 Z" fill="url(#glowGrad)"/>
+  <path d="M 0 280 Q 200 240, 400 270 T 800 250 T 1200 230" fill="none" stroke="url(#accentCyan)" stroke-width="2" opacity="0.5"/>
+  <path d="M 0 298 Q 250 260, 500 290 T 950 265 T 1200 270" fill="none" stroke="url(#accentPurple)" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- ==================== LEFT SECTION: BRANDING & TITLES ==================== -->
+
+  <!-- University & Course Badge Chip -->
+  <g transform="translate(55, 36)">
+    <rect width="380" height="28" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <circle cx="16" cy="14" r="5" fill="#10B981"/>
+    <text x="32" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="0.8">UNIVERSITY OF PERADENIYA • CO5420 PROJECT</text>
+  </g>
+
+  <!-- Main Headline -->
+  <g transform="translate(55, 106)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">
+      Air Pollution Forecasting
+    </text>
+    <text y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="url(#accentCyan)">
+      Temporal Neural Networks &amp; SOTA Ensembles
+    </text>
+    <text y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#CBD5E1">
+      Hourly PM2.5 forecasting across 12 Beijing monitoring stations
+    </text>
+    <text y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748B">
+      Featuring 166 physics-informed atmospheric &amp; kinematic features
+    </text>
+  </g>
+
+  <!-- Left Side Badges / Pills -->
+  <g transform="translate(55, 240)">
+    <!-- Row 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="112" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="56" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">12 Stations</text>
+    </g>
+    <g transform="translate(122, 0)">
+      <rect width="145" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="72.5" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">315,648 Hourly Pts</text>
+    </g>
+    <g transform="translate(277, 0)">
+      <rect width="135" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="67.5" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">5-Fold Stratified</text>
+    </g>
+    <g transform="translate(422, 0)">
+      <rect width="140" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="70" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38BDF8">SLSQP Ensembled</text>
+    </g>
+
+    <!-- Row 2 -->
+    <g transform="translate(0, 36)">
+      <rect width="168" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="84" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">PyTorch ResNet-BiLSTM</text>
+    </g>
+    <g transform="translate(178, 36)">
+      <rect width="186" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="93" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">LightGBM • CatBoost • XGB</text>
+    </g>
+    <g transform="translate(374, 36)">
+      <rect width="188" height="26" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="94" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">Magnus RH &amp; Kinematics</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT SECTION: 2x2 CARDS + INFRA CARD ==================== -->
+  <g transform="translate(680, 36)">
+    <!-- Card 1: Best Score -->
+    <g transform="translate(0, 0)">
+      <rect width="225" height="84" rx="12" fill="url(#cardBg)" stroke="#38BDF8" stroke-width="1.3"/>
+      <text x="16" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1">TOP VERIFIED RMSE</text>
+      <text x="16" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">14.04457</text>
+      <text x="16" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#10B981">🏆 Best SOTA Benchmark</text>
+    </g>
+
+    <!-- Card 2: Engineered Features -->
+    <g transform="translate(240, 0)">
+      <rect width="225" height="84" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1.2"/>
+      <text x="16" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">FEATURE SPACE</text>
+      <text x="16" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">166 Dims</text>
+      <text x="16" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">Atmospheric &amp; Lags</text>
+    </g>
+
+    <!-- Card 3: Deep Learning Core -->
+    <g transform="translate(0, 96)">
+      <rect width="225" height="84" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1.2"/>
+      <text x="16" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">NEURAL CORE</text>
+      <text x="16" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">ResNet-1D BiLSTM</text>
+      <text x="16" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">2-Layer + Residual Skips</text>
+    </g>
+
+    <!-- Card 4: Ensembling Algorithm -->
+    <g transform="translate(240, 96)">
+      <rect width="225" height="84" rx="12" fill="url(#cardBg)" stroke="#8B5CF6" stroke-width="1.2"/>
+      <text x="16" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#C084FC" letter-spacing="1">OPTIMIZATION &amp; BLEND</text>
+      <text x="16" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">SLSQP Blending</text>
+      <text x="16" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#C084FC">Bounded Convex Weights</text>
+    </g>
+
+    <!-- Card 5: GPU Infrastructure Bar -->
+    <g transform="translate(0, 192)">
+      <rect width="465" height="74" rx="12" fill="url(#cardBg)" stroke="#10B981" stroke-width="1.2"/>
+      <circle cx="24" cy="37" r="6" fill="#10B981"/>
+      <text x="40" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#10B981" letter-spacing="0.8">COMPUTE ACCELERATION</text>
+      <text x="40" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF">NVIDIA RTX 6000 Ada (48GB)</text>
+      <text x="278" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">• CUDA In-Memory</text>
+    </g>
+  </g>
+</svg>

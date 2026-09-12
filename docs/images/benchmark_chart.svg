@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="chartBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+    <linearGradient id="barOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="barCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="barGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="950" height="440" rx="14" fill="url(#chartBg)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Chart Header -->
+  <g transform="translate(45, 34)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">
+      RMSE Benchmark Progression Across Experimental Iterations
+    </text>
+    <text y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">
+      Lower is better • Systematic RMSE reduction from early baselines (~15.71) to final verified pipeline (14.04)
+    </text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(560, 32)">
+    <rect x="0" y="2" width="12" height="12" rx="3" fill="url(#barOrange)"/>
+    <text x="18" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">Early RNNs</text>
+    
+    <rect x="95" y="2" width="12" height="12" rx="3" fill="url(#barBlue)"/>
+    <text x="113" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">Explorations</text>
+
+    <rect x="200" y="2" width="12" height="12" rx="3" fill="url(#barCyan)"/>
+    <text x="218" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94A3B8">Adv. Pipeline</text>
+
+    <rect x="305" y="2" width="12" height="12" rx="3" fill="url(#barGreen)"/>
+    <text x="323" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#34D399">Top Verified</text>
+  </g>
+
+  <!-- Plot Area -->
+  <g transform="translate(230, 85)">
+    <!-- Vertical Grid lines (Scale 13.5 to 16.0) -->
+    <!-- Width = 640px. Scale: 13.5 = 0px, 16.0 = 640px => 1 unit = 256px -->
+    <!-- Lines at 14.0, 14.5, 15.0, 15.5, 16.0 -->
+    <g stroke="#334155" stroke-dasharray="3,3" stroke-width="1" opacity="0.6">
+      <line x1="128" y1="0" x2="128" y2="305"/> <!-- 14.0 -->
+      <line x1="256" y1="0" x2="256" y2="305"/> <!-- 14.5 -->
+      <line x1="384" y1="0" x2="384" y2="305"/> <!-- 15.0 -->
+      <line x1="512" y1="0" x2="512" y2="305"/> <!-- 15.5 -->
+      <line x1="640" y1="0" x2="640" y2="305"/> <!-- 16.0 -->
+    </g>
+
+    <!-- X Axis Axis labels -->
+    <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B" text-anchor="middle">
+      <text x="0" y="325">13.5</text>
+      <text x="128" y="325">14.0</text>
+      <text x="256" y="325">14.5</text>
+      <text x="384" y="325">15.0</text>
+      <text x="512" y="325">15.5</text>
+      <text x="640" y="325">16.0 RMSE</text>
+    </g>
+
+    <!-- Bar 1: Preprocessing Exp 2 (15.71107) -->
+    <!-- (15.711 - 13.5) * 256 = 566px -->
+    <g transform="translate(0, 5)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Preprocessing Exp 2</text>
+      <rect width="566" height="22" rx="4" fill="url(#barOrange)" opacity="0.8"/>
+      <text x="575" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">15.711</text>
+    </g>
+
+    <!-- Bar 2: Preprocessing Exp 1 (15.59510) -->
+    <!-- (15.595 - 13.5) * 256 = 536px -->
+    <g transform="translate(0, 39)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Preprocessing Exp 1</text>
+      <rect width="536" height="22" rx="4" fill="url(#barOrange)" opacity="0.8"/>
+      <text x="545" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">15.595</text>
+    </g>
+
+    <!-- Bar 3: Batch 32 Experiment (15.46692) -->
+    <!-- (15.467 - 13.5) * 256 = 503px -->
+    <g transform="translate(0, 73)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Batch Size 32 Test</text>
+      <rect width="503" height="22" rx="4" fill="url(#barBlue)" opacity="0.8"/>
+      <text x="512" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">15.467</text>
+    </g>
+
+    <!-- Bar 4: Augmented Train Data (15.16439) -->
+    <!-- (15.164 - 13.5) * 256 = 426px -->
+    <g transform="translate(0, 107)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Augmented Train Data</text>
+      <rect width="426" height="22" rx="4" fill="url(#barBlue)" opacity="0.85"/>
+      <text x="435" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">15.164</text>
+    </g>
+
+    <!-- Bar 5: Baseline 3-Model (15.09670) -->
+    <!-- (15.097 - 13.5) * 256 = 409px -->
+    <g transform="translate(0, 141)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Baseline 3-Model (BiLSTM/GRU)</text>
+      <rect width="409" height="22" rx="4" fill="url(#barBlue)"/>
+      <text x="418" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">15.097</text>
+    </g>
+
+    <!-- Bar 6: Adv. Pipeline Test 7 (14.55754) -->
+    <!-- (14.558 - 13.5) * 256 = 271px -->
+    <g transform="translate(0, 175)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Adv. Pipeline Test 7</text>
+      <rect width="271" height="22" rx="4" fill="url(#barCyan)" opacity="0.85"/>
+      <text x="280" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">14.558</text>
+    </g>
+
+    <!-- Bar 7: Adv. Pipeline Test 1 (14.36675) -->
+    <!-- (14.367 - 13.5) * 256 = 222px -->
+    <g transform="translate(0, 209)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Adv. Pipeline Test 1 (166 Feat.)</text>
+      <rect width="222" height="22" rx="4" fill="url(#barCyan)"/>
+      <text x="231" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">14.367</text>
+    </g>
+
+    <!-- Bar 8: Adv. Pipeline Test 5 (14.29812) -->
+    <!-- (14.298 - 13.5) * 256 = 204px -->
+    <g transform="translate(0, 243)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#CBD5E1">Adv. Pipeline Test 5 (GPU Ada)</text>
+      <rect width="204" height="22" rx="4" fill="url(#barCyan)"/>
+      <text x="213" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">14.298</text>
+    </g>
+
+    <!-- Bar 9: Adv. Pipeline Test 3 (14.04457) -> WINNER -->
+    <!-- (14.045 - 13.5) * 256 = 139px -->
+    <g transform="translate(0, 277)">
+      <text x="-15" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#34D399">Adv. Pipeline Test 3 🏆</text>
+      <rect width="139" height="22" rx="4" fill="url(#barGreen)" stroke="#6EE7B7" stroke-width="1.2"/>
+      <text x="148" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#34D399">14.045 (Best Verified)</text>
+    </g>
+  </g>
+</svg>
