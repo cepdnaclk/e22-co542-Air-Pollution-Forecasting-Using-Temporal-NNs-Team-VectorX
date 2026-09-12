@@ -296,7 +296,11 @@ jupyter notebook "advanced pipeline model/test 5/gpu_ada (2).ipynb"
 
 ## 👥 Project Team & Contributors
 
-This project was conducted as part of **CO5420: Neural Networks & Deep Learning** under the **Department of Computer Engineering, Faculty of Engineering, University of Peradeniya**.
+<p align="center">
+  <img src="code/assets/VectorX.png" alt="Team VectorX Logo" width="160" style="border-radius: 12px;" />
+</p>
+
+This project was conducted by **Team VectorX** as part of **CO5420: Neural Networks & Deep Learning** under the **Department of Computer Engineering, Faculty of Engineering, University of Peradeniya**.
 
 <table align="center" style="border: none; width: 100%; text-align: center; table-layout: fixed;">
   <tr>
