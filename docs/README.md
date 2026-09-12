@@ -35,62 +35,55 @@ title: "Air Pollution Forecasting Using Temporal Neural Networks & SOTA Hybrid E
 </div>
 
 ### Team Members
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 20px 0 30px 0;">
-  
-  <div style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
-    <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22001.jpg" alt="H.M.H.N. Aberathna" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
-    <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">H.M.H.N. Aberathna</div>
-    <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/001</div>
-    <a href="mailto:e22001@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22001@eng.pdn.ac.lk</a>
-  </div>
 
-  <div style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
-    <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22008.jpg" alt="T.H. Abeywickrama" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
-    <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">T.H. Abeywickrama</div>
-    <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/008</div>
-    <a href="mailto:e22008@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22008@eng.pdn.ac.lk</a>
-  </div>
-
-  <div style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
-    <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22027.jpg" alt="M.A.N.P. Anawarathna" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
-    <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">M.A.N.P. Anawarathna</div>
-    <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/027</div>
-    <a href="mailto:e22027@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22027@eng.pdn.ac.lk</a>
-  </div>
-
-  <div style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
-    <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22130.jpg" alt="S.H.S. Hansara" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
-    <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">S.H.S. Hansara</div>
-    <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/130</div>
-    <a href="mailto:e22130@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22130@eng.pdn.ac.lk</a>
-  </div>
-
-  <div style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
-    <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22362.jpg" alt="W.A.H. Sathsarani" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
-    <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">W.A.H. Sathsarani</div>
-    <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/362</div>
-    <a href="mailto:e22362@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22362@eng.pdn.ac.lk</a>
-  </div>
-
+<div markdown="0" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 20px 0 30px 0;">
+<div markdown="0" style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+  <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22001.jpg" alt="H.M.H.N. Aberathna" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
+  <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">H.M.H.N. Aberathna</div>
+  <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/001</div>
+  <a href="mailto:e22001@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22001@eng.pdn.ac.lk</a>
+</div>
+<div markdown="0" style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+  <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22008.jpg" alt="T.H. Abeywickrama" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
+  <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">T.H. Abeywickrama</div>
+  <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/008</div>
+  <a href="mailto:e22008@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22008@eng.pdn.ac.lk</a>
+</div>
+<div markdown="0" style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+  <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22027.jpg" alt="M.A.N.P. Anawarathna" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
+  <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">M.A.N.P. Anawarathna</div>
+  <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/027</div>
+  <a href="mailto:e22027@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22027@eng.pdn.ac.lk</a>
+</div>
+<div markdown="0" style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+  <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22130.jpg" alt="S.H.S. Hansara" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
+  <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">S.H.S. Hansara</div>
+  <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/130</div>
+  <a href="mailto:e22130@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22130@eng.pdn.ac.lk</a>
+</div>
+<div markdown="0" style="flex: 1 1 180px; max-width: 210px; min-width: 150px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+  <img src="https://people.ce.pdn.ac.lk/images/students/e22/e22362.jpg" alt="W.A.H. Sathsarani" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto; border: 2px solid #38bdf8;" />
+  <div style="font-weight: 700; font-size: 0.95em; color: #1e293b; margin-bottom: 3px;">W.A.H. Sathsarani</div>
+  <div style="font-size: 0.8em; color: #0284c7; font-weight: 600; margin-bottom: 6px;">E/22/362</div>
+  <a href="mailto:e22362@eng.pdn.ac.lk" style="font-size: 0.8em; color: #64748b; text-decoration: none; word-break: break-all;">e22362@eng.pdn.ac.lk</a>
+</div>
 </div>
 
 ### Project Supervisors
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 15px 0 35px 0;">
-  
-  <div style="flex: 1 1 240px; max-width: 320px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-    <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/damayanthi-herath.jpg" alt="Dr. Damayanthi Herath" style="width: 95px; height: 95px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px auto; border: 2px solid #8b5cf6;" />
-    <div style="font-weight: 700; font-size: 1.05em; color: #0f172a;">Dr. Damayanthi Herath</div>
-    <div style="font-size: 0.85em; color: #64748b; margin: 3px 0 6px 0;">Senior Lecturer, Department of Computer Engineering</div>
-    <a href="mailto:damayanthiherath@eng.pdn.ac.lk" style="font-size: 0.85em; color: #0284c7; text-decoration: none;">damayanthiherath@eng.pdn.ac.lk</a>
-  </div>
 
-  <div style="flex: 1 1 240px; max-width: 320px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-    <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/sampath-deegalla.jpg" alt="Dr. Sampath Deegalla" style="width: 95px; height: 95px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px auto; border: 2px solid #8b5cf6;" />
-    <div style="font-weight: 700; font-size: 1.05em; color: #0f172a;">Dr. Sampath Deegalla</div>
-    <div style="font-size: 0.85em; color: #64748b; margin: 3px 0 6px 0;">Senior Lecturer, Department of Computer Engineering</div>
-    <a href="mailto:sampath@eng.pdn.ac.lk" style="font-size: 0.85em; color: #0284c7; text-decoration: none;">sampath@eng.pdn.ac.lk</a>
-  </div>
-
+<div markdown="0" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 15px 0 35px 0;">
+<div markdown="0" style="flex: 1 1 240px; max-width: 320px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+  <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/damayanthi-herath.jpg" alt="Dr. Damayanthi Herath" style="width: 95px; height: 95px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px auto; border: 2px solid #8b5cf6;" />
+  <div style="font-weight: 700; font-size: 1.05em; color: #0f172a;">Dr. Damayanthi Herath</div>
+  <div style="font-size: 0.85em; color: #64748b; margin: 3px 0 6px 0;">Senior Lecturer, Department of Computer Engineering</div>
+  <a href="mailto:damayanthiherath@eng.pdn.ac.lk" style="font-size: 0.85em; color: #0284c7; text-decoration: none;">damayanthiherath@eng.pdn.ac.lk</a>
+</div>
+<div markdown="0" style="flex: 1 1 240px; max-width: 320px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+  <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/sampath-deegalla.jpg" alt="Dr. Sampath Deegalla" style="width: 95px; height: 95px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px auto; border: 2px solid #8b5cf6;" />
+  <div style="font-weight: 700; font-size: 1.05em; color: #0f172a;">Dr. Sampath Deegalla</div>
+  <div style="font-size: 0.85em; color: #64748b; margin: 3px 0 6px 0;">Senior Lecturer, Department of Computer Engineering</div>
+  <a href="mailto:sampath@eng.pdn.ac.lk" style="font-size: 0.85em; color: #0284c7; text-decoration: none;">sampath@eng.pdn.ac.lk</a>
+</div>
 </div>
 
 ---
